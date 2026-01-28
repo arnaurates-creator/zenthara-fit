@@ -1,0 +1,1151 @@
+<!DOCTYPE html>
+<html lang="ca">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Zenthara Fit — Gimnàs & Benestar</title>
+  <meta name="description" content="Zenthara Fit: entrenament, classes dirigides, comunitat i programa de fidelització Zenthara Points."/>
+  <style>
+    :root{
+      --primary:#7B4DFF;     /* lila */
+      --mint:#6FFFB0;        /* verd menta */
+      --dark:#14141a;
+      --text:#222;
+      --muted:#666;
+      --card:#ffffff;
+      --bg:#f6f7fb;
+      --border:#e7e7f0;
+      --shadow: 0 10px 30px rgba(20,20,26,.10);
+      --radius: 18px;
+      --radius2: 26px;
+      --max: 1120px;
+      --font: ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial, "Apple Color Emoji","Segoe UI Emoji";
+    }
+    *{box-sizing:border-box}
+    html{scroll-behavior:smooth}
+    body{
+      margin:0;
+      font-family:var(--font);
+      color:var(--text);
+      background:var(--bg);
+      line-height:1.5;
+    }
+    a{color:inherit; text-decoration:none}
+    img{max-width:100%; display:block}
+
+    /* Top bar */
+    .topbar{
+      background:linear-gradient(90deg, rgba(123,77,255,.12), rgba(111,255,176,.12));
+      border-bottom:1px solid var(--border);
+      font-size:14px;
+    }
+    .topbar .wrap{
+      max-width:var(--max);
+      margin:auto;
+      padding:10px 18px;
+      display:flex;
+      gap:14px;
+      justify-content:space-between;
+      align-items:center;
+      color:var(--muted);
+    }
+    .topbar strong{color:var(--dark)}
+    .pill{
+      display:inline-flex;
+      align-items:center;
+      gap:8px;
+      padding:7px 10px;
+      border:1px solid var(--border);
+      border-radius:999px;
+      background:#fff;
+    }
+    .dot{
+      width:10px;height:10px;border-radius:999px;
+      background:linear-gradient(135deg,var(--primary),var(--mint));
+    }
+
+    /* Navbar */
+    header{
+      position:sticky;
+      top:0;
+      z-index:50;
+      backdrop-filter:saturate(140%) blur(10px);
+      background:rgba(246,247,251,.75);
+      border-bottom:1px solid var(--border);
+    }
+    nav{
+      max-width:var(--max);
+      margin:auto;
+      padding:14px 18px;
+      display:flex;
+      align-items:center;
+      justify-content:space-between;
+      gap:14px;
+    }
+    .brand{
+      display:flex;
+      align-items:center;
+      gap:10px;
+      font-weight:800;
+      letter-spacing:.2px;
+    }
+    .logoMark{
+      width:38px; height:38px;
+      border-radius:14px;
+      background:linear-gradient(135deg,var(--primary),var(--mint));
+      box-shadow:0 10px 24px rgba(123,77,255,.25);
+      position:relative;
+      overflow:hidden;
+    }
+    .logoMark:before{
+      content:"";
+      position:absolute; inset:-10px;
+      background:
+        radial-gradient(circle at 65% 35%, rgba(255,255,255,.95) 0 14px, transparent 15px),
+        radial-gradient(circle at 40% 60%, rgba(255,255,255,.95) 0 6px, transparent 7px),
+        linear-gradient(35deg, rgba(255,255,255,.85), rgba(255,255,255,.0));
+      transform:rotate(12deg);
+      opacity:.85;
+    }
+    .brand span small{
+      display:block;
+      font-weight:600;
+      color:var(--muted);
+      letter-spacing:0;
+      margin-top:-2px;
+      font-size:12px;
+    }
+    .links{
+      display:flex;
+      gap:14px;
+      align-items:center;
+      flex-wrap:wrap;
+      justify-content:flex-end;
+    }
+    .links a{
+      padding:10px 10px;
+      border-radius:12px;
+      color:var(--muted);
+      font-weight:600;
+      font-size:14px;
+    }
+    .links a:hover{background:#fff; color:var(--dark)}
+    .cta{
+      display:inline-flex;
+      align-items:center;
+      gap:10px;
+      padding:10px 14px;
+      border-radius:14px;
+      background:var(--dark);
+      color:#fff;
+      font-weight:700;
+      border:1px solid rgba(0,0,0,.1);
+      box-shadow:var(--shadow);
+      white-space:nowrap;
+    }
+    .cta:hover{transform:translateY(-1px)}
+    .cta .spark{
+      width:10px;height:10px;border-radius:999px;
+      background:linear-gradient(135deg,var(--primary),var(--mint));
+      box-shadow:0 0 0 4px rgba(111,255,176,.12);
+    }
+    .menuBtn{
+      display:none;
+      padding:10px 12px;
+      border-radius:14px;
+      border:1px solid var(--border);
+      background:#fff;
+      font-weight:800;
+      cursor:pointer;
+    }
+
+    /* Hero */
+    .hero{
+      max-width:var(--max);
+      margin:18px auto 0;
+      padding:18px;
+      display:grid;
+      grid-template-columns: 1.2fr .8fr;
+      gap:18px;
+    }
+    .heroCard{
+      background:linear-gradient(135deg, rgba(123,77,255,.12), rgba(111,255,176,.12));
+      border:1px solid var(--border);
+      border-radius:var(--radius2);
+      padding:26px;
+      box-shadow:var(--shadow);
+      position:relative;
+      overflow:hidden;
+    }
+    .heroCard:before{
+      content:"";
+      position:absolute;
+      width:520px;height:520px;
+      border-radius:999px;
+      background:radial-gradient(circle, rgba(123,77,255,.18), transparent 60%);
+      top:-260px; left:-220px;
+    }
+    .heroCard:after{
+      content:"";
+      position:absolute;
+      width:520px;height:520px;
+      border-radius:999px;
+      background:radial-gradient(circle, rgba(111,255,176,.18), transparent 60%);
+      bottom:-290px; right:-250px;
+    }
+    .heroInner{
+      position:relative;
+      z-index:1;
+      display:flex;
+      flex-direction:column;
+      gap:16px;
+    }
+    .kicker{
+      display:inline-flex;
+      gap:10px;
+      align-items:center;
+      width:max-content;
+      padding:8px 12px;
+      border-radius:999px;
+      border:1px solid rgba(20,20,26,.08);
+      background:rgba(255,255,255,.65);
+      color:var(--dark);
+      font-weight:800;
+      font-size:12px;
+      letter-spacing:.4px;
+      text-transform:uppercase;
+    }
+    h1{
+      margin:0;
+      font-size:44px;
+      line-height:1.05;
+      letter-spacing:-.8px;
+      color:var(--dark);
+    }
+    .hero p{
+      margin:0;
+      color:var(--muted);
+      font-size:16px;
+      max-width:62ch;
+    }
+    .heroActions{
+      display:flex;
+      gap:10px;
+      flex-wrap:wrap;
+      align-items:center;
+      margin-top:6px;
+    }
+    .btn{
+      display:inline-flex;
+      align-items:center;
+      justify-content:center;
+      gap:10px;
+      padding:12px 14px;
+      border-radius:14px;
+      border:1px solid var(--border);
+      background:#fff;
+      font-weight:800;
+      color:var(--dark);
+      cursor:pointer;
+      box-shadow:0 12px 24px rgba(20,20,26,.06);
+    }
+    .btn:hover{transform:translateY(-1px)}
+    .btnPrimary{
+      background:var(--primary);
+      color:#fff;
+      border-color:rgba(0,0,0,.0);
+    }
+    .stats{
+      display:grid;
+      grid-template-columns:repeat(3,1fr);
+      gap:12px;
+      margin-top:10px;
+    }
+    .stat{
+      background:rgba(255,255,255,.7);
+      border:1px solid rgba(20,20,26,.08);
+      border-radius:18px;
+      padding:12px;
+    }
+    .stat strong{
+      display:block;
+      font-size:18px;
+      color:var(--dark);
+    }
+    .stat span{
+      color:var(--muted);
+      font-size:13px;
+    }
+
+    /* Side card */
+    .sideCard{
+      background:var(--card);
+      border:1px solid var(--border);
+      border-radius:var(--radius2);
+      padding:18px;
+      box-shadow:var(--shadow);
+      display:flex;
+      flex-direction:column;
+      gap:12px;
+    }
+    .sideTop{
+      display:flex;
+      justify-content:space-between;
+      align-items:flex-start;
+      gap:10px;
+    }
+    .tag{
+      display:inline-flex;
+      align-items:center;
+      gap:8px;
+      padding:7px 10px;
+      border-radius:999px;
+      background:rgba(123,77,255,.10);
+      border:1px solid rgba(123,77,255,.18);
+      font-weight:800;
+      font-size:12px;
+      color:var(--primary);
+      width:max-content;
+    }
+    .badge{
+      padding:8px 10px;
+      border-radius:14px;
+      background:rgba(111,255,176,.14);
+      border:1px solid rgba(111,255,176,.25);
+      font-weight:900;
+      color:#126a3d;
+      font-size:12px;
+      white-space:nowrap;
+    }
+    .sideCard h3{margin:0; font-size:18px}
+    .list{
+      margin:0; padding:0;
+      list-style:none;
+      display:flex;
+      flex-direction:column;
+      gap:10px;
+    }
+    .list li{
+      display:flex;
+      gap:10px;
+      align-items:flex-start;
+      padding:10px;
+      border-radius:16px;
+      border:1px solid var(--border);
+      background:#fff;
+    }
+    .ic{
+      width:34px;height:34px;
+      border-radius:14px;
+      background:linear-gradient(135deg, rgba(123,77,255,.18), rgba(111,255,176,.18));
+      display:grid;
+      place-items:center;
+      font-weight:900;
+      color:var(--dark);
+      flex:0 0 auto;
+    }
+    .list li b{display:block}
+    .list li small{color:var(--muted)}
+
+    /* Sections */
+    section{
+      max-width:var(--max);
+      margin:0 auto;
+      padding:22px 18px;
+    }
+    .sectionTitle{
+      display:flex;
+      align-items:flex-end;
+      justify-content:space-between;
+      gap:14px;
+      flex-wrap:wrap;
+      margin:10px 0 14px;
+    }
+    .sectionTitle h2{
+      margin:0;
+      font-size:26px;
+      letter-spacing:-.3px;
+      color:var(--dark);
+    }
+    .sectionTitle p{
+      margin:0;
+      color:var(--muted);
+      max-width:65ch;
+      font-size:14px;
+    }
+
+    .grid3{
+      display:grid;
+      grid-template-columns:repeat(3,1fr);
+      gap:14px;
+    }
+    .card{
+      background:var(--card);
+      border:1px solid var(--border);
+      border-radius:var(--radius);
+      padding:16px;
+      box-shadow:0 14px 30px rgba(20,20,26,.07);
+    }
+    .card h3{margin:0 0 6px; font-size:18px}
+    .card p{margin:0; color:var(--muted); font-size:14px}
+    .chips{
+      display:flex; flex-wrap:wrap; gap:8px;
+      margin-top:12px;
+    }
+    .chip{
+      padding:8px 10px;
+      border-radius:999px;
+      border:1px solid var(--border);
+      background:#fff;
+      font-weight:800;
+      font-size:12px;
+      color:var(--dark);
+    }
+
+    /* Schedule */
+    .controls{
+      display:flex;
+      gap:10px;
+      flex-wrap:wrap;
+      align-items:center;
+      margin:10px 0 14px;
+    }
+    select, input{
+      padding:12px 12px;
+      border-radius:14px;
+      border:1px solid var(--border);
+      background:#fff;
+      font-weight:700;
+      outline:none;
+      min-width:220px;
+    }
+    .tableWrap{
+      overflow:auto;
+      border-radius:var(--radius2);
+      border:1px solid var(--border);
+      background:#fff;
+      box-shadow:var(--shadow);
+    }
+    table{
+      width:100%;
+      border-collapse:separate;
+      border-spacing:0;
+      min-width:760px;
+    }
+    th,td{
+      padding:14px 14px;
+      text-align:left;
+      border-bottom:1px solid var(--border);
+      font-size:14px;
+    }
+    th{
+      position:sticky; top:0;
+      background:#fff;
+      z-index:1;
+      font-size:12px;
+      color:var(--muted);
+      text-transform:uppercase;
+      letter-spacing:.6px;
+    }
+    tr:hover td{background:rgba(123,77,255,.06)}
+    .pillType{
+      display:inline-flex;
+      align-items:center;
+      gap:8px;
+      padding:7px 10px;
+      border-radius:999px;
+      font-weight:900;
+      font-size:12px;
+      border:1px solid var(--border);
+      background:#fff;
+      color:var(--dark);
+      white-space:nowrap;
+    }
+    .pillType .miniDot{
+      width:9px;height:9px;border-radius:999px;
+      background:linear-gradient(135deg,var(--primary),var(--mint));
+    }
+
+    /* Pricing */
+    .price{
+      display:flex;
+      align-items:baseline;
+      gap:8px;
+      margin:10px 0 0;
+    }
+    .price strong{font-size:28px; color:var(--dark)}
+    .price span{color:var(--muted)}
+    .fine{margin-top:10px; color:var(--muted); font-size:13px}
+    .highlight{
+      border:1px solid rgba(123,77,255,.35);
+      background:linear-gradient(135deg, rgba(123,77,255,.10), rgba(111,255,176,.08));
+    }
+
+    /* Trainers */
+    .person{
+      display:flex; gap:12px; align-items:center;
+    }
+    .avatar{
+      width:54px;height:54px;border-radius:18px;
+      background:linear-gradient(135deg, rgba(123,77,255,.25), rgba(111,255,176,.25));
+      border:1px solid rgba(20,20,26,.08);
+      display:grid;
+      place-items:center;
+      font-weight:900;
+      color:var(--dark);
+      flex:0 0 auto;
+    }
+    .person b{display:block}
+    .person small{color:var(--muted)}
+
+    /* Loyalty */
+    .loyal{
+      display:grid;
+      grid-template-columns: 1fr 1fr;
+      gap:14px;
+      align-items:stretch;
+    }
+    .steps{
+      margin:0; padding:0; list-style:none;
+      display:flex; flex-direction:column; gap:10px;
+    }
+    .steps li{
+      display:flex; gap:10px; align-items:flex-start;
+      padding:12px;
+      border-radius:18px;
+      border:1px solid var(--border);
+      background:#fff;
+    }
+    .num{
+      width:30px; height:30px;
+      border-radius:12px;
+      display:grid;
+      place-items:center;
+      font-weight:900;
+      color:#fff;
+      background:var(--primary);
+      flex:0 0 auto;
+    }
+    .steps b{display:block}
+    .steps small{color:var(--muted)}
+
+    /* Contact */
+    .contactGrid{
+      display:grid;
+      grid-template-columns: 1fr 1fr;
+      gap:14px;
+      align-items:stretch;
+    }
+    textarea{
+      width:100%;
+      min-height:120px;
+      resize:vertical;
+      padding:12px;
+      border-radius:14px;
+      border:1px solid var(--border);
+      background:#fff;
+      font-weight:600;
+      outline:none;
+      font-family:var(--font);
+    }
+    .submit{
+      width:100%;
+      margin-top:10px;
+    }
+    .map{
+      width:100%;
+      min-height:320px;
+      border-radius:var(--radius2);
+      border:1px solid var(--border);
+      overflow:hidden;
+      box-shadow:var(--shadow);
+      background:#fff;
+    }
+    .map iframe{width:100%; height:100%; border:0}
+
+    /* FAQ */
+    details{
+      background:#fff;
+      border:1px solid var(--border);
+      border-radius:18px;
+      padding:12px 14px;
+      box-shadow:0 10px 20px rgba(20,20,26,.05);
+    }
+    summary{
+      cursor:pointer;
+      font-weight:900;
+      color:var(--dark);
+      outline:none;
+    }
+    details p{margin:10px 0 0; color:var(--muted); font-size:14px}
+
+    /* Footer */
+    footer{
+      margin-top:20px;
+      border-top:1px solid var(--border);
+      background:#fff;
+    }
+    footer .wrap{
+      max-width:var(--max);
+      margin:auto;
+      padding:18px;
+      display:flex;
+      gap:14px;
+      justify-content:space-between;
+      flex-wrap:wrap;
+      color:var(--muted);
+      font-size:14px;
+    }
+    .footerLinks{
+      display:flex; gap:12px; flex-wrap:wrap;
+    }
+    .footerLinks a{color:var(--muted); font-weight:700}
+    .footerLinks a:hover{color:var(--dark)}
+
+    /* Responsive */
+    @media (max-width: 980px){
+      .hero{grid-template-columns:1fr; }
+      .grid3{grid-template-columns:1fr; }
+      .loyal{grid-template-columns:1fr;}
+      .contactGrid{grid-template-columns:1fr;}
+      h1{font-size:38px}
+    }
+    @media (max-width: 720px){
+      .links{display:none}
+      .menuBtn{display:inline-flex}
+      nav{gap:10px}
+      .stats{grid-template-columns:1fr; }
+      select,input{min-width: 0; width:100%;}
+      .controls{flex-direction:column; align-items:stretch}
+    }
+    .mobileMenu{
+      display:none;
+      max-width:var(--max);
+      margin:0 auto;
+      padding:0 18px 14px;
+    }
+    .mobileMenu.open{display:block}
+    .mobileMenu a{
+      display:block;
+      padding:12px 12px;
+      border-radius:14px;
+      background:#fff;
+      border:1px solid var(--border);
+      margin-top:10px;
+      font-weight:800;
+      color:var(--dark);
+    }
+  </style>
+</head>
+<body>
+
+  <div class="topbar">
+    <div class="wrap">
+      <div class="pill"><span class="dot"></span> <span><strong>Zenthara Fit</strong> · "Activa la teva millor versió"</span></div>
+      <div class="pill">📍 Sabadell · 📞 937 555 210</div>
+    </div>
+  </div>
+
+  <header>
+    <nav>
+      <a class="brand" href="#home" aria-label="Zenthara Fit">
+        <div class="logoMark" aria-hidden="true"></div>
+        <span>ZENTHARA FIT<small>Entrena. Cuida't. Comparteix.</small></span>
+      </a>
+
+      <button class="menuBtn" id="menuBtn" aria-label="Obrir menú">☰</button>
+
+      <div class="links" id="links">
+        <a href="#classes">Classes</a>
+        <a href="#horaris">Horaris</a>
+        <a href="#preus">Preus</a>
+        <a href="#entrenadors">Entrenadors</a>
+        <a href="#fidelitzacio">Fidelització</a>
+        <a href="#contacte">Contacte</a>
+        <a class="cta" href="#prova"><span class="spark"></span> Prova 7 dies</a>
+      </div>
+    </nav>
+
+    <div class="mobileMenu" id="mobileMenu">
+      <a href="#classes">Classes</a>
+      <a href="#horaris">Horaris</a>
+      <a href="#preus">Preus</a>
+      <a href="#entrenadors">Entrenadors</a>
+      <a href="#fidelitzacio">Fidelització</a>
+      <a href="#contacte">Contacte</a>
+      <a href="#prova">Prova 7 dies</a>
+    </div>
+  </header>
+
+  <!-- HERO -->
+  <main id="home" class="hero">
+    <div class="heroCard">
+      <div class="heroInner">
+        <div class="kicker"><span class="dot"></span> Gimnàs + comunitat + salut</div>
+        <h1>Activa la teva millor versió.</h1>
+        <p>
+          A <strong>Zenthara Fit</strong> tens classes dirigides, sala de força, entrenament personal i reptes mensuals.
+          I amb <strong>Zenthara Points</strong> guanyes punts cada cop que vens.
+        </p>
+        <div class="heroActions" id="prova">
+          <a class="btn btnPrimary" href="#contacte">Vull la prova de 7 dies</a>
+          <a class="btn" href="#horaris">Veure horaris</a>
+          <a class="btn" href="#fidelitzacio">Com funciona Zenthara Points</a>
+        </div>
+        <div class="stats">
+          <div class="stat"><strong>+25 classes/setmana</strong><span>Força, cardio i benestar</span></div>
+          <div class="stat"><strong>3 plans</strong><span>Flex, Pro i Premium</span></div>
+          <div class="stat"><strong>Reptes mensuals</strong><span>Motivació i punts extra</span></div>
+        </div>
+      </div>
+    </div>
+
+    <aside class="sideCard">
+      <div class="sideTop">
+        <span class="tag">El que ens fa diferents</span>
+        <span class="badge">+Punts per constància</span>
+      </div>
+      <h3>Què hi trobaràs?</h3>
+      <ul class="list">
+        <li>
+          <div class="ic">💪</div>
+          <div><b>Sala de força</b><small>Màquines + pes lliure + rutines</small></div>
+        </li>
+        <li>
+          <div class="ic">🔥</div>
+          <div><b>Classes dirigides</b><small>HIIT, spinning, pilates, ioga…</small></div>
+        </li>
+        <li>
+          <div class="ic">🧠</div>
+          <div><b>Benestar</b><small>Mobilitat, estiraments i recuperació</small></div>
+        </li>
+      </ul>
+      <a class="cta" href="#preus"><span class="spark"></span> Veure preus</a>
+      <p class="fine">*Web fictícia per a projecte escolar. Dades simulades.</p>
+    </aside>
+  </main>
+
+  <!-- CLASSES -->
+  <section id="classes">
+    <div class="sectionTitle">
+      <div>
+        <h2>Classes dirigides</h2>
+        <p>Per a tots els nivells. Pots reservar des de la recepció o des de l’app.</p>
+      </div>
+    </div>
+
+    <div class="grid3">
+      <div class="card">
+        <h3>🔥 HIIT Pulse</h3>
+        <p>Intervals curts, intensitat alta. Millora cardio i crema calories.</p>
+        <div class="chips">
+          <span class="chip">45 min</span>
+          <span class="chip">Cardio</span>
+          <span class="chip">Nivell: Mitjà/Alt</span>
+        </div>
+      </div>
+      <div class="card">
+        <h3>🚴 Spin Energy</h3>
+        <p>Spinning amb música i sèries. Ideal per resistència.</p>
+        <div class="chips">
+          <span class="chip">50 min</span>
+          <span class="chip">Cardio</span>
+          <span class="chip">Nivell: Tots</span>
+        </div>
+      </div>
+      <div class="card">
+        <h3>🧘 Zen Flow</h3>
+        <p>Ioga + respiració. Redueix estrès i millora flexibilitat.</p>
+        <div class="chips">
+          <span class="chip">55 min</span>
+          <span class="chip">Benestar</span>
+          <span class="chip">Nivell: Tots</span>
+        </div>
+      </div>
+
+      <div class="card">
+        <h3>🏋️ Strength Lab</h3>
+        <p>Força funcional (core, cames, esquena). Tècnica i seguretat.</p>
+        <div class="chips">
+          <span class="chip">50 min</span>
+          <span class="chip">Força</span>
+          <span class="chip">Nivell: Mitjà</span>
+        </div>
+      </div>
+      <div class="card">
+        <h3>🌿 Pilates Core</h3>
+        <p>Treball de core i postura. Perfecte si tens mal d’esquena.</p>
+        <div class="chips">
+          <span class="chip">50 min</span>
+          <span class="chip">Benestar</span>
+          <span class="chip">Nivell: Tots</span>
+        </div>
+      </div>
+      <div class="card">
+        <h3>🕺 Dance Fit</h3>
+        <p>Cardio ballat. Molt divertit i social.</p>
+        <div class="chips">
+          <span class="chip">45 min</span>
+          <span class="chip">Cardio</span>
+          <span class="chip">Nivell: Tots</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- HORARIS -->
+  <section id="horaris">
+    <div class="sectionTitle">
+      <div>
+        <h2>Horaris</h2>
+        <p>Filtra per dia o per tipus de classe.</p>
+      </div>
+    </div>
+
+    <div class="controls">
+      <select id="dayFilter" aria-label="Filtre per dia">
+        <option value="Tots">Tots els dies</option>
+        <option value="Dilluns">Dilluns</option>
+        <option value="Dimarts">Dimarts</option>
+        <option value="Dimecres">Dimecres</option>
+        <option value="Dijous">Dijous</option>
+        <option value="Divendres">Divendres</option>
+        <option value="Dissabte">Dissabte</option>
+      </select>
+
+      <select id="typeFilter" aria-label="Filtre per tipus">
+        <option value="Tots">Tots els tipus</option>
+        <option value="Cardio">Cardio</option>
+        <option value="Força">Força</option>
+        <option value="Benestar">Benestar</option>
+      </select>
+
+      <input id="searchFilter" type="text" placeholder="Cerca (ex: HIIT, Pilates…)" aria-label="Cercador"/>
+      <button class="btn" id="clearBtn" type="button">Netejar filtres</button>
+    </div>
+
+    <div class="tableWrap" role="region" aria-label="Taula d'horaris">
+      <table>
+        <thead>
+          <tr>
+            <th>Dia</th>
+            <th>Hora</th>
+            <th>Classe</th>
+            <th>Tipus</th>
+            <th>Sala</th>
+            <th>Monitor/a</th>
+          </tr>
+        </thead>
+        <tbody id="scheduleBody">
+          <!-- JS injecta files -->
+        </tbody>
+      </table>
+    </div>
+
+    <p class="fine">*Horaris ficticis. Pots editar-los al codi (array <code>schedule</code>).</p>
+  </section>
+
+  <!-- PREUS -->
+  <section id="preus">
+    <div class="sectionTitle">
+      <div>
+        <h2>Preus</h2>
+        <p>Tria el pla que s’ajusti millor. Canvia o cancel·la quan vulguis (segons condicions).</p>
+      </div>
+    </div>
+
+    <div class="grid3">
+      <div class="card">
+        <h3>Flex</h3>
+        <p>Accés a sala + 6 classes al mes.</p>
+        <div class="price"><strong>29€</strong><span>/ mes</span></div>
+        <div class="chips">
+          <span class="chip">Sala fitness</span>
+          <span class="chip">6 classes</span>
+          <span class="chip">App</span>
+        </div>
+        <p class="fine">Ideal per començar.</p>
+      </div>
+
+      <div class="card highlight">
+        <h3>Pro (recomanat)</h3>
+        <p>Sala + classes il·limitades + punts extra.</p>
+        <div class="price"><strong>39€</strong><span>/ mes</span></div>
+        <div class="chips">
+          <span class="chip">Classes il·limitades</span>
+          <span class="chip">+10% punts</span>
+          <span class="chip">Rutina mensual</span>
+        </div>
+        <p class="fine">El més equilibrat qualitat/preu.</p>
+      </div>
+
+      <div class="card">
+        <h3>Premium</h3>
+        <p>Pro + 1 sessió d’entrenador personal/mes.</p>
+        <div class="price"><strong>59€</strong><span>/ mes</span></div>
+        <div class="chips">
+          <span class="chip">PT mensual</span>
+          <span class="chip">+20% punts</span>
+          <span class="chip">Seguiment</span>
+        </div>
+        <p class="fine">Per anar a tope i millorar més ràpid.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- ENTRENADORS -->
+  <section id="entrenadors">
+    <div class="sectionTitle">
+      <div>
+        <h2>Equip d’entrenadors</h2>
+        <p>Gent propera, tècnica i motivadora.</p>
+      </div>
+    </div>
+
+    <div class="grid3">
+      <div class="card">
+        <div class="person">
+          <div class="avatar">AM</div>
+          <div><b>Anna Martí</b><small>Força funcional · tècnica</small></div>
+        </div>
+        <p class="fine">Especialista en entrenament segur i progressiu.</p>
+      </div>
+      <div class="card">
+        <div class="person">
+          <div class="avatar">JR</div>
+          <div><b>Jordi Roca</b><small>HIIT · cardio · motivació</small></div>
+        </div>
+        <p class="fine">Sessions intenses amb bon rotllo.</p>
+      </div>
+      <div class="card">
+        <div class="person">
+          <div class="avatar">LP</div>
+          <div><b>Laia Pons</b><small>Ioga · pilates · mobilitat</small></div>
+        </div>
+        <p class="fine">Benestar i flexibilitat sense pressió.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- FIDELITZACIÓ -->
+  <section id="fidelitzacio">
+    <div class="sectionTitle">
+      <div>
+        <h2>Zenthara Points</h2>
+        <p>Guanya punts per constància i bescanvia’ls per experiències.</p>
+      </div>
+    </div>
+
+    <div class="loyal">
+      <div class="card">
+        <h3>Com guanyo punts?</h3>
+        <ul class="steps">
+          <li><div class="num">1</div><div><b>Vinc a entrenar</b><small>+10 punts per visita</small></div></li>
+          <li><div class="num">2</div><div><b>Faig un repte</b><small>+30 punts per repte mensual</small></div></li>
+          <li><div class="num">3</div><div><b>Porto un amic</b><small>+50 punts si s’inscriu</small></div></li>
+          <li><div class="num">4</div><div><b>Renovo quota</b><small>+150 punts en renovació anual</small></div></li>
+        </ul>
+      </div>
+
+      <div class="card">
+        <h3>Què puc aconseguir?</h3>
+        <div class="chips">
+          <span class="chip">200 pts · Samarreta</span>
+          <span class="chip">300 pts · Sessió PT</span>
+          <span class="chip">450 pts · Massatge esportiu</span>
+          <span class="chip">600 pts · Mes gratis (Pro)</span>
+        </div>
+        <p class="fine">
+          Els punts caduquen al cap de <b>12 mesos</b>. (Dades fictícies; pots modificar-les).
+        </p>
+        <a class="btn btnPrimary" href="#contacte">Vull apuntar-m’hi</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- FAQ -->
+  <section id="faq">
+    <div class="sectionTitle">
+      <div>
+        <h2>FAQ</h2>
+        <p>Dubtes típics abans d’apuntar-te.</p>
+      </div>
+    </div>
+
+    <div class="grid3">
+      <details>
+        <summary>He de reservar les classes?</summary>
+        <p>Sí, per controlar l’aforament. Ho pots fer a recepció o per l’app.</p>
+      </details>
+      <details>
+        <summary>Puc provar el gimnàs abans?</summary>
+        <p>Sí. Tens una prova de 7 dies (condicions fictícies). Demana-la al formulari de contacte.</p>
+      </details>
+      <details>
+        <summary>Què passa si no vinc sovint?</summary>
+        <p>Justament per això existeix Zenthara Points: et dona motivació i premis per constància.</p>
+      </details>
+    </div>
+  </section>
+
+  <!-- CONTACTE -->
+  <section id="contacte">
+    <div class="sectionTitle">
+      <div>
+        <h2>Contacte</h2>
+        <p>Demana la prova, informació de plans o una visita guiada.</p>
+      </div>
+    </div>
+
+    <div class="contactGrid">
+      <div class="card">
+        <h3>Escriu-nos</h3>
+        <form id="contactForm">
+          <input type="text" id="name" placeholder="Nom i cognoms" required>
+          <div style="height:10px"></div>
+          <input type="email" id="email" placeholder="Email" required>
+          <div style="height:10px"></div>
+          <input type="tel" id="phone" placeholder="Telèfon (opcional)">
+          <div style="height:10px"></div>
+          <textarea id="msg" placeholder="Missatge (ex: vull la prova de 7 dies...)" required></textarea>
+          <button class="btn btnPrimary submit" type="submit">Enviar</button>
+          <p class="fine" id="formResult" aria-live="polite"></p>
+        </form>
+        <p class="fine">📍 Carrer de l’Energia, 25 — Sabadell · 📞 937 555 210</p>
+      </div>
+
+      <div class="map" aria-label="Mapa">
+        <!-- Pots canviar el lloc buscant a Google Maps i copiant l'iframe -->
+        <iframe
+          loading="lazy"
+          referrerpolicy="no-referrer-when-downgrade"
+          src="https://www.google.com/maps?q=Sabadell%20Carrer%20de%20l'Energia%2025&output=embed">
+        </iframe>
+      </div>
+    </div>
+  </section>
+
+  <footer>
+    <div class="wrap">
+      <div>
+        <strong style="color:#14141a;">Zenthara Fit</strong><br/>
+        <span>Entrenament personalitzat, salut real i comunitat que motiva.</span>
+      </div>
+      <div class="footerLinks">
+        <a href="#classes">Classes</a>
+        <a href="#horaris">Horaris</a>
+        <a href="#preus">Preus</a>
+        <a href="#fidelitzacio">Zenthara Points</a>
+      </div>
+      <div>© 2026 · Web fictícia per a pràctica</div>
+    </div>
+  </footer>
+
+  <script>
+    // ====== Menú mòbil ======
+    const menuBtn = document.getElementById('menuBtn');
+    const mobileMenu = document.getElementById('mobileMenu');
+    menuBtn?.addEventListener('click', () => {
+      mobileMenu.classList.toggle('open');
+    });
+
+    // ====== Horaris (edita aquí si vols) ======
+    const schedule = [
+      { day:"Dilluns",  time:"07:30", name:"Spin Energy",   type:"Cardio",   room:"Sala B", coach:"Jordi" },
+      { day:"Dilluns",  time:"18:00", name:"HIIT Pulse",    type:"Cardio",   room:"Sala A", coach:"Jordi" },
+      { day:"Dilluns",  time:"19:00", name:"Pilates Core",  type:"Benestar", room:"Sala C", coach:"Laia"  },
+
+      { day:"Dimarts",  time:"08:00", name:"Zen Flow",      type:"Benestar", room:"Sala C", coach:"Laia"  },
+      { day:"Dimarts",  time:"18:30", name:"Strength Lab",  type:"Força",    room:"Sala A", coach:"Anna"  },
+      { day:"Dimarts",  time:"19:30", name:"Dance Fit",     type:"Cardio",   room:"Sala B", coach:"Jordi" },
+
+      { day:"Dimecres", time:"07:30", name:"HIIT Pulse",    type:"Cardio",   room:"Sala A", coach:"Jordi" },
+      { day:"Dimecres", time:"18:00", name:"Spin Energy",   type:"Cardio",   room:"Sala B", coach:"Jordi" },
+      { day:"Dimecres", time:"19:00", name:"Zen Flow",      type:"Benestar", room:"Sala C", coach:"Laia"  },
+
+      { day:"Dijous",   time:"08:00", name:"Pilates Core",  type:"Benestar", room:"Sala C", coach:"Laia"  },
+      { day:"Dijous",   time:"18:30", name:"Strength Lab",  type:"Força",    room:"Sala A", coach:"Anna"  },
+      { day:"Dijous",   time:"19:30", name:"Dance Fit",     type:"Cardio",   room:"Sala B", coach:"Jordi" },
+
+      { day:"Divendres",time:"07:30", name:"Spin Energy",   type:"Cardio",   room:"Sala B", coach:"Jordi" },
+      { day:"Divendres",time:"18:00", name:"HIIT Pulse",    type:"Cardio",   room:"Sala A", coach:"Jordi" },
+      { day:"Divendres",time:"19:00", name:"Zen Flow",      type:"Benestar", room:"Sala C", coach:"Laia"  },
+
+      { day:"Dissabte", time:"10:00", name:"Strength Lab",  type:"Força",    room:"Sala A", coach:"Anna"  },
+      { day:"Dissabte", time:"11:00", name:"Pilates Core",  type:"Benestar", room:"Sala C", coach:"Laia"  },
+      { day:"Dissabte", time:"12:00", name:"Dance Fit",     type:"Cardio",   room:"Sala B", coach:"Jordi" },
+    ];
+
+    const scheduleBody = document.getElementById('scheduleBody');
+    const dayFilter = document.getElementById('dayFilter');
+    const typeFilter = document.getElementById('typeFilter');
+    const searchFilter = document.getElementById('searchFilter');
+    const clearBtn = document.getElementById('clearBtn');
+
+    function renderSchedule(){
+      const dayVal = dayFilter.value;
+      const typeVal = typeFilter.value;
+      const q = (searchFilter.value || "").trim().toLowerCase();
+
+      const filtered = schedule.filter(item => {
+        const okDay = (dayVal === "Tots") || item.day === dayVal;
+        const okType = (typeVal === "Tots") || item.type === typeVal;
+        const okSearch = !q || (item.name.toLowerCase().includes(q) || item.coach.toLowerCase().includes(q));
+        return okDay && okType && okSearch;
+      });
+
+      scheduleBody.innerHTML = filtered.map(item => `
+        <tr>
+          <td>${item.day}</td>
+          <td><strong>${item.time}</strong></td>
+          <td>${item.name}</td>
+          <td><span class="pillType"><span class="miniDot"></span>${item.type}</span></td>
+          <td>${item.room}</td>
+          <td>${item.coach}</td>
+        </tr>
+      `).join("");
+
+      if(filtered.length === 0){
+        scheduleBody.innerHTML = `
+          <tr>
+            <td colspan="6" style="padding:20px; color:#666;">
+              No s'han trobat classes amb aquests filtres.
+            </td>
+          </tr>
+        `;
+      }
+    }
+
+    dayFilter.addEventListener('change', renderSchedule);
+    typeFilter.addEventListener('change', renderSchedule);
+    searchFilter.addEventListener('input', renderSchedule);
+    clearBtn.addEventListener('click', () => {
+      dayFilter.value = "Tots";
+      typeFilter.value = "Tots";
+      searchFilter.value = "";
+      renderSchedule();
+    });
+
+    renderSchedule();
+
+    // ====== Formulari (simulat) ======
+    const form = document.getElementById('contactForm');
+    const formResult = document.getElementById('formResult');
+
+    form.addEventListener('submit', (e) => {
+      e.preventDefault();
+      const name = document.getElementById('name').value.trim();
+      const email = document.getElementById('email').value.trim();
+      const msg = document.getElementById('msg').value.trim();
+
+      if(!name || !email || !msg){
+        formResult.textContent = "Revisa el formulari: falta informació.";
+        return;
+      }
+
+      formResult.textContent = "✅ Enviat! (Simulat) Aviat et contactarem per la prova de 7 dies.";
+      form.reset();
+    });
+  </script>
+</body>
+</html>
